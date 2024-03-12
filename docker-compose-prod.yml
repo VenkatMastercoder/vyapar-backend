@@ -1,0 +1,25 @@
+version: '3'
+services:
+  nginx:
+    ports:
+      - "80:80"
+
+  service-one:
+    build: 
+      context: microservices\service-one
+      args:
+        - NODE_ENV=dev
+    environment:
+      - NODE_ENV=dev
+      - PORT=8001
+    command: npm start
+    
+  service-two:
+    build: 
+      context: microservices\service-two
+      args:
+        - NODE_ENV=dev
+    environment:
+      - NODE_ENV=dev
+      - PORT=8002
+    command: npm start
